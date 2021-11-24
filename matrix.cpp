@@ -20,6 +20,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 #include "matrix.h"
 #include <math.h>
+#include <algorithm>
 
 #define SWAP(a,b) {temp=a;a=b;b=temp;}
 #define SIGN(a,b) ((b) >= 0.0 ? fabs(a) : -fabs(a))
@@ -124,7 +125,7 @@ void Matrix::setVal(FLOAT s,int32_t i1,int32_t j1,int32_t i2,int32_t j2) {
 }
 
 void Matrix::setDiag(FLOAT s,int32_t i1,int32_t i2) {
-  if (i2==-1) i2 = min(m-1,n-1);
+  if (i2==-1) i2 = std::min(m-1,n-1);
   for (int32_t i=i1; i<=i2; i++)
     val[i][i] = s;
 }
@@ -153,7 +154,7 @@ void Matrix::eye () {
   for (int32_t i=0; i<m; i++)
     for (int32_t j=0; j<n; j++)
       val[i][j] = 0;
-  for (int32_t i=0; i<min(m,n); i++)
+  for (int32_t i=0; i<std::min(m,n); i++)
     val[i][i] = 1;
 }
 
@@ -415,6 +416,7 @@ FLOAT Matrix::det () {
   for( int32_t i=0; i<m; i++)
     d *= A.val[i][i];
   free(idx);
+  return d;
 }
 
 bool Matrix::solve (const Matrix &M, FLOAT eps) {
@@ -797,10 +799,10 @@ void Matrix::svd(Matrix &U2,Matrix &W,Matrix &V) {
   }
 
   // create vector and copy singular values
-  W = Matrix(min(m,n),1,w);
+  W = Matrix(std::min(m,n),1,w);
   
   // extract mxm submatrix U
-  U2.setMat(U.getMat(0,0,m-1,min(m-1,n-1)),0,0);
+  U2.setMat(U.getMat(0,0,m-1,std::min(m-1,n-1)),0,0);
 
   // release temporary memory
   free(w);

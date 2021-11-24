@@ -1,0 +1,6 @@
+# Byte-compiled / optimized / DLL files
+.vs
+Debug
+Release
+bin
+*.user
