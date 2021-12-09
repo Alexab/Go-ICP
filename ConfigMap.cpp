@@ -146,6 +146,6 @@ void ConfigMap::print() {
   
   for (std::map<std::string,std::string>::const_iterator iter = mappings.begin(); iter != mappings.end(); iter++)
   {
-    std::cout << "(" << iter->first << ")->(" << iter->second << ")" << std::endl;
+    std::cout << "(" << iter->first << ")->(" << iter->second << ") ";
   }
 };

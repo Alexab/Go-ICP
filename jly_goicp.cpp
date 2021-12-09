@@ -337,7 +337,7 @@ float GoICP::OuterBnB()
 	{
 		optError += minDis[i]*minDis[i];
 	}
-	cout << "Error*: " << optError << " (Init)" << endl;
+	cout << "Error*: " << optError << " (Init) "<< endl;
 
 	Matrix R_icp = optR;
 	Matrix t_icp = optT;
@@ -351,10 +351,10 @@ float GoICP::OuterBnB()
 		optR = R_icp;
 		optT = t_icp;
 		cout << "Error*: " << error << " (ICP " << (double)(clock()-clockBeginICP)/CLOCKS_PER_SEC << "s)" << endl;
-		cout << "ICP-ONLY Rotation Matrix:" << endl;
-		cout << R_icp << endl;
-		cout << "ICP-ONLY Translation Vector:" << endl;
-		cout << t_icp << endl;
+//		cout << "ICP-ONLY Rotation Matrix:" << endl;
+//		cout << R_icp << endl;
+//		cout << "ICP-ONLY Translation Vector:" << endl;
+//		cout << t_icp << endl;
 	}
 
 	// Push top-level rotation node into priority queue
@@ -366,7 +366,7 @@ float GoICP::OuterBnB()
 	{
 		if(queueRot.empty())
 		{
-		  cout << "Rotation Queue Empty" << endl;
+		  cout << "Rotation Queue Empty: ";
 		  cout << "Error*: " << optError << ", LB: " << lb << endl;
 		  break;
 		}

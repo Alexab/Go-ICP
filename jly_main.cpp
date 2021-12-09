@@ -72,7 +72,7 @@ int main(int argc, char** argv)
 		goicp.Nd = NdDownsampled; // Only use first NdDownsampled data points (assumes data points are randomly ordered)
 	}
 	cout << "Model ID: " << modelFName << " (" << goicp.Nm << "), Data ID: " << dataFName << " (" << goicp.Nd << ")" << endl;
-	cout << "Registering..." << endl;
+	cout << "Registering..."<<endl;
 	clockBegin = clock();
 	goicp.Register();
 	clockEnd = clock();
@@ -130,13 +130,12 @@ void parseInput(int argc, char **argv, string & modelFName, string & dataFName, 
 		modelFName = argv[1];
 	}
 
-	cout << "INPUT:" << endl;
-	cout << "(modelFName)->(" << modelFName << ")" << endl;
-	cout << "(dataFName)->(" << dataFName << ")" << endl;
-	cout << "(NdDownsampled)->(" << NdDownsampled << ")" << endl;
-	cout << "(configFName)->(" << configFName << ")" << endl;
-	cout << "(outputFName)->(" << outputFName << ")" << endl;
-	cout << endl;
+	cout << "INPUT: ";
+	cout << "(modelFName)->(" << modelFName << ") ";
+	cout << "(dataFName)->(" << dataFName << ") ";
+	cout << "(NdDownsampled)->(" << NdDownsampled << ") ";
+	cout << "(configFName)->(" << configFName << ") ";
+	cout << "(outputFName)->(" << outputFName << ") " << endl;
 }
 
 void readConfig(string FName, GoICP & goicp)
@@ -162,7 +161,7 @@ void readConfig(string FName, GoICP & goicp)
 	goicp.dt.SIZE = config.getI("distTransSize");
 	goicp.dt.expandFactor = config.getF("distTransExpandFactor");
 
-	cout << "CONFIG:" << endl;
+	cout << "CONFIG: ";
 	config.print();
 	//cout << "(doTrim)->(" << goicp.doTrim << ")" << endl;
 	cout << endl;
